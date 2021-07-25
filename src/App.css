@@ -1,6 +1,14 @@
 .App {
-
+    display: flex;
+    position: relative;
 }
-.content{
-    background-color: white;
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.main_content {
+    width: 100%;
 }
