@@ -1,17 +1,19 @@
 import React from "react"
 import "./App.css"
 import {Header} from "./Components/Header/Header"
-import {Container} from "@material-ui/core"
-import {Footer} from "./Components/Footer/Footer"
+import {Nav} from "./Components/Nav/Nav"
+import {MainContent} from "./Components/MainContent/MainContent"
 
 export const App = () => {
     return (
-        <Container fixed className="App">
-            <Header/>
+        <div className="App">
             <div className={"content"}>
-                Content
+                <Header/>
+                <Nav/>
+                <div className={"main_content"}>
+                    <MainContent/>
+                </div>
             </div>
-            <Footer/>
-        </Container>
+        </div>
     )
 }
