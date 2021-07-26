@@ -1,0 +1,32 @@
+.container{
+    width: 100%;
+    height: auto;
+    clear: both;
+    float: left;
+    padding-top: 33px;
+}
+
+.root {
+    width: 100%;
+    margin-bottom: 17px;
+}
+.root_span {
+    margin: 0 0 5px;
+    width: 100%;
+    display: block;
+    text-align: left;
+    color: #000;
+}
+.background {
+    background: rgba(0,0,0,.09);
+    width: 100%;
+    min-width: 100%;
+    position: relative;
+    height: 3px;
+}
+.bar_in {
+    height: 100%;
+    background: #000;
+
+    overflow: hidden;
+}
