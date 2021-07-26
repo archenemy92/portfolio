@@ -3,12 +3,20 @@ import {BottomNavigation} from "@material-ui/core"
 import styles from "./Footer.module.css"
 import {createStyles, makeStyles} from "@material-ui/core/styles"
 import {NavLink} from "react-router-dom"
+import FacebookIcon from "@material-ui/icons/Facebook"
+import InstagramIcon from "@material-ui/icons/Instagram"
+import TelegramIcon from "@material-ui/icons/Telegram"
+import LinkedInIcon from "@material-ui/icons/LinkedIn"
 
 const useStyles = makeStyles(() =>
     createStyles({
         root: {
-            backgroundColor: "rgba(63,65,92,0.75)",
-            margin: "3px 0 0 0",
+            backgroundColor: "black",
+            margin: "auto 0 0 0",
+
+            "& > a": {
+                color: "white",
+            }
         },
 
     }),
@@ -20,10 +28,10 @@ export const Footer: React.FC = () => {
 
     return (
         <BottomNavigation className={`${classes.root} ${styles.footer}`}>
-                <NavLink to={"/#"}>link</NavLink>
-                <NavLink to={"/#"}>link</NavLink>
-                <NavLink to={"/#"}>link</NavLink>
-                <NavLink to={"/#"}>link</NavLink>
+            <NavLink to={"/#"}><FacebookIcon/></NavLink>
+            <NavLink to={"/#"}><InstagramIcon/></NavLink>
+            <NavLink to={"/#"}><TelegramIcon/></NavLink>
+            <NavLink to={"/#"}><LinkedInIcon/></NavLink>
         </BottomNavigation>
     )
 }
