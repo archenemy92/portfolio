@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
             height: "100vh",
             color: "white",
             flexDirection: "column",
-            alignItems:"center",
+            alignItems: "center",
             fontSize: "20px",
             padding: "10px ",
             position: "fixed",
@@ -28,14 +28,19 @@ const useStyles = makeStyles((theme: Theme) =>
                 color: "white",
             },
             "& > a.active": {
-                color: "yellow"
+                color: "hsl(40, 7%, 74%)"
             },
             "& > a:hover": {
-                color: "blue"
+                fontWeight: "bold"
+
             },
             margin: "80% 0 0 0",
             display: "flex",
-            flexDirection: "column"
+            flexDirection: "column",
+            width: "100px",
+            [theme.breakpoints.down(800)]: {
+                margin: "40vh 0 0 0"
+            },
         }
 
     })
@@ -52,11 +57,11 @@ export const Nav: React.FC = () => {
             {showNavbar &&
             <div className={classes.root}>
                 <div className={classes.links}>
-                    <NavLink to={"/home"}>HOME</NavLink>
-                    <NavLink to={"/aboutMe"}>ABOUT ME</NavLink>
-                    <NavLink to={"/portfolio"}>PORTFOLIO</NavLink>
-                    <NavLink to={"/news"}>NEWS</NavLink>
-                    <NavLink to={"/contact"}>CONTACT</NavLink>
+                    <NavLink to={"/home"}>Home</NavLink>
+                    <NavLink to={"/aboutMe"}>About</NavLink>
+                    <NavLink to={"/portfolio"}>Portfolio</NavLink>
+                    <NavLink to={"/news"}>News</NavLink>
+                    <NavLink to={"/contacts"}>Contacts</NavLink>
                 </div>
             </div>
 
