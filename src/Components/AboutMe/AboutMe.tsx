@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import {createStyles, makeStyles} from "@material-ui/core/styles"
-import {Button, useMediaQuery, useTheme} from "@material-ui/core"
+import {Button, Modal, useMediaQuery, useTheme} from "@material-ui/core"
+import style from "./AboutMe.module.css"
 
 const useStyles = makeStyles((theme) =>
     createStyles({
@@ -19,12 +20,11 @@ const useStyles = makeStyles((theme) =>
                 width: "60%",
                 display: "flex",
                 margin: "5vh 0 0 0"
-
             },
             width: "100%",
             display: "flex",
             justifyContent: "center",
-            margin: "20px 0 0 0"
+            margin: "50px 0 0 0"
         },
         descBlock: {
             "& > *": {
@@ -72,18 +72,74 @@ const useStyles = makeStyles((theme) =>
             width: "100%",
             margin: "20px 0 0 0",
             border: "1px solid white"
-        }
+        },
+        modal: {
+            position: "absolute",
+            width: "40%",
+            backgroundColor: theme.palette.background.paper,
+            border: "2px solid #000",
+            boxShadow: theme.shadows[5],
+            padding: theme.spacing(2, 4, 3),
+            display: "flex",
+            alignContent: "center",
+            [theme.breakpoints.down(800)]: {
+                width: "60%",
+                margin: "0 0 0 5%",
+                display:"flex",
+                flexDirection: "column",
+                alignContent: "center"
+            },
+        },
 
+        modal_codeSkill: {
+            width: "50%",
+            margin: "0 50px 0 10px",
+            [theme.breakpoints.down(800)]: {
+              margin: "auto"
+            },
+        },
+        modal_langSkill: {
+            width: "50%",
+            margin: "0 10px 0 50px",
+            [theme.breakpoints.down(800)]: {
+                margin: "auto"
+            },
+        }
 
     })
 )
 
-export const MainContent: React.FC = () => {
+function rand() {
+    return Math.round(Math.random() * 20) - 10
+}
+
+function getModalStyle() {
+    const top = 50 + rand()
+    const left = 50 + rand()
+
+    return {
+        top: `${top}%`,
+        left: `${left}%`,
+        transform: `translate(-${top}%, -${left}%)`,
+    }
+}
+
+export const AboutMe: React.FC = () => {
     let classes = useStyles()
     const [tap, setTap] = useState<boolean>(false)
+    const [open, setOpen] = useState<boolean>(false)
+    const [modalStyle] = React.useState(getModalStyle)
+
+    const handleOpen = () => {
+        setOpen(true)
+    }
+
+    const handleClose = () => {
+        setOpen(false)
+    }
 
     const theme = useTheme()
-    const showNavbar = useMediaQuery(theme.breakpoints.up("md"))
+    const showTitle = useMediaQuery(theme.breakpoints.up("md"))
 
     if (tap) {
         classes = {
@@ -100,7 +156,7 @@ export const MainContent: React.FC = () => {
 
     return (
         <div className={classes.root}>
-            {showNavbar && <h1 style={{color: "white", textAlign: "center", padding: "30px 0 0 0"}}>Portfolio</h1>}
+            {showTitle && <h1 style={{color: "white", textAlign: "center", padding: "30px 0 0 0"}}>Portfolio</h1>}
             <div className={classes.avatar}>
                 <img
                     src={"https://st3.depositphotos.com/2760050/31696/i/1600/depositphotos_316961086-stock-photo-what-if-man-with-bristle.jpg"}
@@ -135,10 +191,11 @@ export const MainContent: React.FC = () => {
                         ipsum' will uncover many web sites still in their infancy.
                         Various versions have evolved over the years, sometimes by accident,
                         sometimes on purpose (injected humour and the like).
+                        <Button className={classes.buttonMore} onClick={handleOpen}>INFO</Button>
                     </div>
                     {tap
-                        ?<Button className={classes.buttonMore} onClick={() => setTap(!tap)}>Hide</Button>
-                        :<Button className={classes.buttonMore} onClick={() => setTap(!tap)}>More</Button>}
+                        ? <Button className={classes.buttonMore} onClick={() => setTap(!tap)}>Hide</Button>
+                        : <Button className={classes.buttonMore} onClick={() => setTap(!tap)}>More</Button>}
                 </div>
                 <div className={classes.info}>
                     <div>Address: UA64240, Kharkiv</div>
@@ -149,6 +206,67 @@ export const MainContent: React.FC = () => {
                     <div>Phone: +380990510506</div>
                     <div>Study: yes</div>
                 </div>
+                <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                >
+                    <div style={modalStyle} className={classes.modal}>
+                        <div className={classes.modal_codeSkill}>
+                            <InfoContainer skillSection={"CODE_SKILLS"}>
+                                <Info skillTitle={"JS"} skillLevel={"20%"}/>
+                                <Info skillTitle={"REACT"} skillLevel={"50%"}/>
+                                <Info skillTitle={"TS"} skillLevel={"30%"}/>
+                            </InfoContainer>
+                        </div>
+                        <div className={classes.modal_langSkill}>
+                            <InfoContainer skillSection={"LANGUAGE_SKILL"}>
+                                <Info skillTitle={"UA"} skillLevel={"90%"}/>
+                                <Info skillTitle={"ENG"} skillLevel={"50%"}/>
+                                <Info skillTitle={"RUS"} skillLevel={"55%"}/>
+                            </InfoContainer>
+                        </div>
+                    </div>
+                </Modal>
+            </div>
+        </div>
+    )
+}
+
+type InfoType = {
+    skillTitle: string
+    skillLevel: string
+}
+
+const Info: React.FC<InfoType> = ({skillLevel, skillTitle}) => {
+    return (
+        <div className={style.root}>
+            <span className={style.root_span}>
+                <span>{skillTitle}</span>
+                <span style={{float: "right"}}>{skillLevel}</span>
+            </span>
+            <div className={style.background}>
+                <div style={{width: "100%", height: "100%"}}></div>
+                <div className={style.bar_in} style={{width: `${skillLevel}`}}></div>
+            </div>
+        </div>
+    )
+}
+
+type InfoContainerType = {
+    skillSection: string
+}
+const InfoContainer: React.FC<InfoContainerType> = ({skillSection, ...restProps}) => {
+    return (
+        <div>
+            <div>
+                <h3>
+                    {skillSection}
+                </h3>
+            </div>
+            <div className={style.container}>
+                {restProps.children}
             </div>
         </div>
     )
