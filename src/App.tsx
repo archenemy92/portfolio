@@ -8,14 +8,21 @@ import {Home} from "./Components/Home/Home"
 import {Portfolio} from "./Components/Portfolio/Portfolio"
 import {News} from "./Components/News/News"
 import {Contacts} from "./Components/Contacts/Contacts"
+import {useMediaQuery, useTheme} from "@material-ui/core"
 
 export const App = () => {
+    const theme = useTheme()
+    const isDesktop = useMediaQuery(theme.breakpoints.up("md"))
     return (
-        <div className="App">
-            <div className={"content"}>
-                <Header/>
-                <Nav/>
-                <div className={"main_content"}>
+        <div className="content">
+            <div className={"nav"}>
+                {isDesktop
+                    ? <div className={"navigation"}> <Nav/> </div>
+                    : <div className={"header"}> <Header/> </div>}
+            </div>
+
+            <div className={"main_content"}>
+                <div>
                     <Route path={"/home"} render={() => <Home/>}/>
                     <Route path={"/aboutMe"} render={() => <AboutMe/>}/>
                     <Route path={"/portfolio"} render={() => <Portfolio/>}/>

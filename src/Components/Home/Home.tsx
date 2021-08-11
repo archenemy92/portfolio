@@ -7,9 +7,6 @@ const useStyles = makeStyles((theme) =>
         root: {
             color: "white",
             display: "flex",
-            justifyContent: "center",
-            width: "60%",
-            margin: "15% 0 0 30%",
             [theme.breakpoints.down(950)]: {
                 display: "flex",
                 flexDirection: "column",
