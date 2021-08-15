@@ -1,7 +1,55 @@
 .main {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
+    flex-direction: column;
+    margin: 50px 0 0 0;
 }
 
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.title {
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+.list {
+    font-size: 16px;
+    color: white;
+    margin: auto;
+    width: min-content;
+}
+.list ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    color: white;
+}
+.list ul li {
+    margin: 0 25px 0 0;
+    text-decoration: none;
+    color: #767676;
+    display: inline-block;
+    font-weight: 500;
+    transition: all .3s ease;
+    cursor: pointer;
+}
+
+ul li:hover {
+    letter-spacing: 1px;
+}
+
+@media (min-width: 280px) and (max-width: 1099px){
+    .content {
+        width: 300px;
+    }
+}
