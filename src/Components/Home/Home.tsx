@@ -1,52 +1,62 @@
 import React from "react"
 import {createStyles, makeStyles} from "@material-ui/core/styles"
 import {Footer} from "../Footer/Footer"
+import {NavLink} from "react-router-dom"
+import FacebookIcon from "@material-ui/icons/Facebook"
+import InstagramIcon from "@material-ui/icons/Instagram"
+import TelegramIcon from "@material-ui/icons/Telegram"
+import LinkedInIcon from "@material-ui/icons/LinkedIn"
 
 const useStyles = makeStyles((theme) =>
     createStyles({
         root: {
             color: "white",
             display: "flex",
-            [theme.breakpoints.down(950)]: {
-                display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "37vh 0 0 0",
+            [theme.breakpoints.down(1400)]: {
                 flexDirection: "column",
                 alignItems: "center",
-                width: "40%",
-                margin: "30% 0 0 30%",
+                margin: "10% 0 0 0"
             },
         },
         img: {
             height: "30vh",
-            [theme.breakpoints.down(500)]: {
-                height: "25vh",
+            [theme.breakpoints.down(400)]: {
+                width: "85vw",
             },
         },
         imageCont: {
             display: "flex",
-            justifyContent: "start",
+            justifyContent: "space-between",
             [theme.breakpoints.down(1300)]: {
-                display: "flex",
                 flexDirection: "column",
                 alignItems: "center"
             },
 
         },
         desc: {
-            width: "40%",
-            margin: "0 5px 15px 5%",
             display: "flex",
             flexDirection: "column",
+            alignItems: "center",
+            padding: "0 10px",
+            width: "300px",
             [theme.breakpoints.down(1300)]: {
-                width: "100%"
+                alignItems: "center",
+                width: "275px",
             },
         },
         head: {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center",
+            [theme.breakpoints.down(1300)]: {
+                fontSize: "2vh",
+                alignItems: "center"
+            },
             [theme.breakpoints.down(500)]: {
-                fontSize: "2vh"
+                fontSize: "2vh",
             },
         },
         imgBox: {
@@ -60,7 +70,7 @@ export const Home: React.FC = () => {
     return (
         <div className={classes.root}>
             <div className={classes.imageCont}>
-                <div style={{border: "5px solid white"}}>
+                <div>
                     <div className={classes.imgBox}>
                         <img
                             className={classes.img}
@@ -71,14 +81,19 @@ export const Home: React.FC = () => {
                 </div>
                 <div className={classes.desc}>
                     <div className={classes.head}>
-                        <h1>VADYM BORSHCH</h1>
-                        <h5 style={{width: "80%"}}>
+                        <h2 style={{textAlign:"center", marginTop:"0"}}>VADYM BORSHCH</h2>
+                        <p style={{padding: "0 30px"}}>
                             text text text text text
                             text text text text text
                             text text text text text
-                        </h5>
+                        </p>
                     </div>
-                    <Footer/>
+                    <Footer>
+                        <NavLink to={"/#"}><FacebookIcon/></NavLink>
+                        <NavLink to={"/#"}><InstagramIcon/></NavLink>
+                        <a target="_blank" href="https://t.me/Borshche" rel="noreferrer"><TelegramIcon/></a>
+                        <a target="_blank" href="https://www.linkedin.com/in/vadym-borshch-31829621a" rel="noreferrer"><LinkedInIcon/></a>
+                    </Footer>
                 </div>
             </div>
         </div>
