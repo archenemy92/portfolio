@@ -23,15 +23,15 @@
 }
 
 .main_content {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
     width: 100%;
     margin-left: 450px;
 }
-
+.main_components {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .navigation > div {
     display: flex;
