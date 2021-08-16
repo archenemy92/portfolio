@@ -22,22 +22,24 @@
     width: 100%;
     text-align: center;
 }
+
 .list {
     font-size: 16px;
     color: white;
     margin: auto;
     width: min-content;
 }
+
 .list ul {
     display: flex;
     justify-content: center;
     list-style-type: none;
     color: white;
 }
+
 .list ul li {
     margin: 0 25px 0 0;
     text-decoration: none;
-    color: #767676;
     display: inline-block;
     font-weight: 500;
     transition: all .3s ease;
@@ -48,7 +50,15 @@ ul li:hover {
     letter-spacing: 1px;
 }
 
-@media (min-width: 280px) and (max-width: 1099px){
+.unActive {
+    color: white;
+}
+
+.active {
+    color: #767676;
+}
+
+@media (min-width: 280px) and (max-width: 1099px) {
     .content {
         width: 300px;
     }

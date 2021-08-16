@@ -76,6 +76,7 @@
         padding: 10px 50px;
         height: auto;
         border-right: none;
+        z-index: 1;
     }
 
     .main_content {

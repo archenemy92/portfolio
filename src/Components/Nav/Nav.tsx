@@ -9,13 +9,14 @@ const useStyles = makeStyles((theme: Theme) =>
             "& > a": {
                 textDecoration: "none",
                 margin: "10px",
-                color: "white",
+                color: "hsl(40, 7%, 74%)",
+                transition: "all .4s linear"
             },
             "& > a.active": {
-                color: "hsl(40, 7%, 74%)"
+                color: "white"
             },
             "& > a:hover": {
-                fontWeight: "bold"
+                transform: "scale(1.1)"
             }
         }
     })

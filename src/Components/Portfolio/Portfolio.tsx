@@ -53,7 +53,9 @@ export const Portfolio: React.FC = () => {
 
         let newState = array.filter(el => el.filter === filter)
         setState(newState)
+
     }
+
 
     return (
         <div className={styles.main}>
