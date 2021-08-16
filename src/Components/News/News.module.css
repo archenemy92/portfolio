@@ -3,7 +3,6 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     flex-direction: row;
-    width: 720px;
 }
 
 @media (min-width: 280px) and (max-width: 1099px){
