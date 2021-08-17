@@ -1,3 +1,11 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 22.5vh 0 0 0;
+
+}
+
 .label {
     font-size: 10px;
     margin: 10px 0 5px 5px;
@@ -47,5 +55,6 @@
 }
 
 @media (min-width: 280px) and (max-width: 600px) {
-    .textArea {}
+    .textArea {
+    }
 }

@@ -5,7 +5,7 @@ import {Button} from "@material-ui/core"
 export const Contacts: React.FC = () => {
 
     return (
-        <form>
+        <form className={styles.form}>
             <h1>CONTACT ME</h1>
             <Input value={"NAME"}/>
             <Input value={"EMAIL"}/>
