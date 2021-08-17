@@ -3,7 +3,7 @@ import {Card} from "../Common/Card"
 import styles from "./Portfolio.module.css"
 import {v1} from "uuid"
 
-let array = [
+let cards = [
     {
         id: v1(),
         title: "JS",
@@ -40,22 +40,28 @@ let array = [
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThFGBTwrc-m2PX_3YlVq-RcE25W8wv96dBTw&usqp=CAU"
     },
 ]
-
+let liArr = [
+    {id:v1(), value: "ALL"},
+    {id:v1(), value: "JS"},
+    {id:v1(), value: "TS"},
+    {id:v1(), value: "OTHER"},
+]
 export const Portfolio: React.FC = () => {
 
-    const [state, setState] = useState(array)
+    const [state, setState] = useState(cards)
+    const [active, setActive] = useState("ALL")
 
-    let onClickHandler = (filter: string) => {
-        if (filter === "all") {
-            setState(array)
+    let onClickHandler = (e: React.MouseEvent<HTMLLIElement>, filter: string) => {
+        if (filter === "ALL") {
+            setState(cards)
+            setActive(filter)
             return
         }
 
-        let newState = array.filter(el => el.filter === filter)
+        let newState = cards.filter(el => el.filter.toUpperCase() === filter)
         setState(newState)
-
+        setActive(filter)
     }
-
 
     return (
         <div className={styles.main}>
@@ -65,10 +71,10 @@ export const Portfolio: React.FC = () => {
                 </div>
                 <div className={styles.list}>
                     <ul>
-                        <li onClick={() => onClickHandler("all")}>All</li>
-                        <li onClick={() => onClickHandler("js")}>JS</li>
-                        <li onClick={() => onClickHandler("ts")}>React_TS</li>
-                        <li onClick={() => onClickHandler("other")}>Redux</li>
+                        {liArr.map(li=> <LI key={li.id}
+                            style={active===li.value? styles.active: styles.unActive}
+                            value={li.value}
+                            callback={onClickHandler}/>)}
                     </ul>
                 </div>
             </div>
@@ -76,5 +82,24 @@ export const Portfolio: React.FC = () => {
                 {state.map(p => <Card key={p.id} {...p}/>)}
             </div>
         </div>
+    )
+}
+
+type LIPropsType = {
+    style: string | undefined
+    value: string
+    callback: (e: React.MouseEvent<HTMLLIElement>, title:string) => void
+}
+
+const LI: React.FC<LIPropsType> = ({style, value, callback}) => {
+    return (
+        <li
+            onClick={(e)=> {
+                callback(e, value)
+            }}
+            className={style}
+        >
+            {value}
+        </li>
     )
 }
