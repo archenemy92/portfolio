@@ -50,8 +50,12 @@
 .button.button {
     width: 150px;
     border: 1px solid rgba(200, 197, 194, 0.85);
-    color: white;
     margin: 10px 0 0 0;
+    background-color: white;
+}
+
+.button.button:hover {
+    background-color: rgba(179,194,255,0.85);
 }
 
 @media (min-width: 280px) and (max-width: 600px) {
