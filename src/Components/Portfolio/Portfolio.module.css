@@ -47,15 +47,17 @@
 }
 
 ul li:hover {
-    letter-spacing: 1px;
+    transform: scale(1.2);
+
 }
 
 .unActive {
-    color: white;
+    color: #767676;
 }
 
 .active {
-    color: #767676;
+    transform: scale(1.2);
+    color: white;
 }
 
 @media (min-width: 280px) and (max-width: 1099px) {
