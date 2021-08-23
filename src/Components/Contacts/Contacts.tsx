@@ -9,7 +9,7 @@ export const Contacts: React.FC = () => {
             <h1>CONTACT ME</h1>
             <Input value={"NAME"}/>
             <Input value={"EMAIL"}/>
-            <TextArea value={"MESSAGE"}/>
+            <Textarea value={"MESSAGE"}/>
             <Button className={styles.button}>SEND</Button>
         </form>
     )
@@ -58,7 +58,7 @@ type TextareaPropsType ={
     value: string
 }
 
-const TextArea: React.FC<TextareaPropsType> = ({value}) => {
+const Textarea: React.FC<TextareaPropsType> = ({value}) => {
     const [text, setText] = useState("")
     const [isTap, setIsTap] = useState(false)
 
