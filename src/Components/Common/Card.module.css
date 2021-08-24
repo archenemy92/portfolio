@@ -1,0 +1,29 @@
+.root {
+    width: 320px;
+    height: auto;
+    margin: 30px;
+}
+
+.root a {
+    text-decoration: none;
+    color: black;
+}
+
+.link img {
+    transition: all .4s linear;
+    margin: 20px 0 20px 0;
+}
+
+.link img:hover {
+    transform: scale(1.1);
+}
+
+@media (min-width: 280px) and (max-width: 600px) {
+    .root {
+        width: 240px;
+    }
+
+    .link img {
+        width: 200px;
+    }
+}

@@ -1,0 +1,12 @@
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+@media (min-width: 280px) and (max-width: 1099px){
+    .content {
+        width: 300px;
+    }
+}

@@ -1,31 +1,29 @@
 import React from "react"
-import {BottomNavigation, Tabs} from "@material-ui/core"
+import {BottomNavigation} from "@material-ui/core"
 import styles from "./Footer.module.css"
 import {createStyles, makeStyles} from "@material-ui/core/styles"
-import {NavLink} from "react-router-dom"
 
 const useStyles = makeStyles(() =>
     createStyles({
         root: {
-            backgroundColor: "rgba(63,65,92,0.75)",
-            margin: "3px 0 0 0"
+            backgroundColor: "inherit",
+            margin: "auto 0",
+            "& > a": {
+                color: "white",
+            }
         },
 
     }),
 )
 
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC = ({...restProps}) => {
     const classes = useStyles()
 
     return (
         <BottomNavigation className={`${classes.root} ${styles.footer}`}>
-                <NavLink to={"/#"}>link</NavLink>
-                <NavLink to={"/#"}>link</NavLink>
-                <NavLink to={"/#"}>link</NavLink>
-                <NavLink to={"/#"}>link</NavLink>
+            {restProps.children}
         </BottomNavigation>
     )
 }
-
 

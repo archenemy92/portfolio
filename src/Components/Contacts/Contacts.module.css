@@ -1,0 +1,66 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: calc(100% / 9) 0 0 0;
+    height: 100%;
+}
+
+.label {
+    font-size: 10px;
+    margin: 10px 0 5px 5px;
+    color: white;
+}
+
+.inputBox {
+    border: 1px solid rgba(200, 197, 194, 0.85);
+}
+
+.input {
+    width: 50vw;
+    outline: none;
+    margin: 10px;
+    color: white;
+    background-color: inherit;
+    border: none;
+}
+
+.input::placeholder {
+    color: white;
+}
+
+.textAreaContainer {
+    border: 1px solid rgba(200, 197, 194, 0.85);
+}
+
+.textArea {
+    width: 50vw;
+    height: 200px;
+    margin: 10px;
+    border: none;
+    background-color: inherit;
+    resize: none;
+    outline: none;
+    color: white;
+}
+
+.textArea::placeholder {
+    color: white;
+}
+
+.button.button {
+    width: 150px;
+    border: 1px solid rgba(200, 197, 194, 0.85);
+    margin: 10px 0 0 0;
+    background-color: white;
+    font-weight: bold;
+}
+
+.button.button:hover {
+    background-color: rgba(179, 194, 255, 0.85);
+}
+
+@media (min-width: 280px) and (max-width: 600px) {
+    .textArea {
+    }
+}
